@@ -7,8 +7,22 @@ import BgGlassmorphism from "@/components/BgGlassmorphism";
 import BackgroundSection from "@/components/BackgroundSection";
 import SectionClientSay from "@/components/SectionClientSay";
 import SectionSubscribe2 from "@/components/SectionSubscribe2";
+import {Metadata} from "next";
 
 export interface PageHomeProps {}
+
+export const metadata = {
+    title: 'GardeMonToit.nc | GMT',
+    description: "GardeMonToit.nc : La plateforme de référence en Nouvelle-Calédonie pour le home-sitting de confiance. Trouvez des gardiens fiables pour veiller sur votre maison pendant votre absence, offrant la tranquillité d'esprit que vous méritez. Rejoignez notre communauté de propriétaires de maison et de gardiens de confiance dès aujourd'hui.",
+    applicationName: "GardeMonToit.nc",
+    authors: "GardeMonToit.nc",
+    generator: "Next.js",
+    keywords: ["Home-sitting", "Garde de maison", "Gardiens de confiance", "Surveillance résidentielle", "Nouvelle-Calédonie", "Gardemontoit.nc", "Home-sitting de confiance", "Home-sitters qualifiés", "Sécurité résidentielle", "Propriétaires de maison", "Gardiens qualifiés", "Garde de domicile", "Séjour sans souci", "Plateforme de home-sitting", "Protection résidentielle", "Service de garde de maison", "Community de home-sitters", "Surveillance de domicile", "Sécurité de propriété", "Séjour en toute confiance", "Service de confiance", "Nouvelle-Calédonie", "NC"],
+    category: "service",
+    icons: {
+        icon: 'icon.png',
+    }
+};
 
 const PageHome: FC<PageHomeProps> = ({}) => {
   return (
@@ -25,6 +39,7 @@ const PageHome: FC<PageHomeProps> = ({}) => {
           />
 
             {/*<SectionFounder />*/}
+          <SectionSubscribe2 />
           <SectionStatistic />
           <div className="relative py-16">
             <BackgroundSection />
@@ -32,7 +47,6 @@ const PageHome: FC<PageHomeProps> = ({}) => {
           </div>
 
 
-          <SectionSubscribe2 />
         </div>
       </div>
   );

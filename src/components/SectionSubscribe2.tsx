@@ -18,7 +18,7 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
       <div className="flex-shrink-0 mb-10 lg:mb-0 lg:mr-10 lg:w-2/5">
         <h2 className="font-semibold text-4xl">Restez connectés 🎉</h2>
         <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-          Abonnez-vous à notre news-letter et être au courant de notre mise en ligne!
+          Abonnez-vous à notre news-letter pour être au courant de notre mise en ligne!
         </span>
         {/*<ul className="space-y-4 mt-10">
           <li className="flex items-center space-x-4">

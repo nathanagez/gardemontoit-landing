@@ -1,4 +1,6 @@
-import React, { FC } from "react";
+'use client'
+
+import React, { FC, FormEventHandler, HTMLInputTypeAttribute } from "react";
 import ButtonCircle from "@/shared/ButtonCircle";
 import rightImg from "@/images/SVG-subcribe2.png";
 import Badge from "@/shared/Badge";
@@ -10,6 +12,30 @@ export interface SectionSubscribe2Props {
 }
 
 const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
+  const [email, setEmail] = React.useState('');
+  const [subscribed, setSubscribed] = React.useState({state: false, message: ''});
+
+  const subscribeUser = async (event) => {
+    event.preventDefault();
+    let alert = ''
+
+    const res = await fetch('/api/newsletter', {
+      body: JSON.stringify({email}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+
+    alert = res.ok ? 'Vous êtes abonné(e) !' : 'Une erreur est survenue :(';
+    
+    setSubscribed({state: true, message: alert})
+    setTimeout(() => {
+      setEmail('');
+      setSubscribed({state: false, message: ''})
+    }, 3000)
+  }
+
   return (
     <div
       className={`nc-SectionSubscribe2 relative flex flex-col lg:flex-row lg:items-center ${className}`}
@@ -34,12 +60,14 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
             </span>
           </li>
         </ul>*/}
-        <form className="mt-10 relative max-w-sm">
+        <form className="mt-10 relative max-w-sm" onSubmit={subscribeUser}>
           <Input
             required
             aria-required
             placeholder="Entrez votre email"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
             rounded="rounded-full"
             sizeClass="h-12 px-5 py-3"
           />
@@ -51,6 +79,7 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
             <i className="las la-arrow-right text-xl"></i>
           </ButtonCircle>
         </form>
+        {subscribed.state && <span>{subscribed.message}</span>}
       </div>
       <div className="flex-grow">
         <Image alt="" src={rightImg} />

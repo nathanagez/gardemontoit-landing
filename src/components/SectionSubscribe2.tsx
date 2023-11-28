@@ -17,7 +17,7 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
 
   const subscribeUser = async (event) => {
     event.preventDefault();
-    var alert = ''
+    let alert = ''
 
     const res = await fetch('/api/newsletter', {
       body: JSON.stringify({email}),
@@ -27,11 +27,7 @@ const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
       method: 'POST',
     });
 
-    if (res.ok) {
-      alert = 'Vous êtes abonné(e) !'
-    } else {
-      alert = 'Une erreur est survenue :('
-    }
+    alert = res.ok ? 'Vous êtes abonné(e) !' : 'Une erreur est survenue :(';
     
     setSubscribed({state: true, message: alert})
     setTimeout(() => {

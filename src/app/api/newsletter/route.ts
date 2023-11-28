@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { NextRequest, NextResponse, userAgent } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET() {
   return Response.json('OK');
@@ -15,8 +15,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const API_KEY = process.env.MAILCHIMP_API_KEY
   const API_SERVER = process.env.MAILCHIMP_API_SERVER
   const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
-
-  // console.log({API_KEY, API_SERVER, AUDIENCE_ID, email})
 
   //required for basic auth api call
   const base64ApiKey = Buffer.from(`anystring:${API_KEY}`).toString("base64");
